@@ -1,0 +1,63 @@
+<div class="container mt-3">
+
+
+    <div class="card">
+        <div class="card-body">
+
+
+            <h4>Consulta de Clientes</h4>
+            <p>Listagem de clientes cadastradas.</p>
+            <hr />
+
+
+            <div *ngIf="mensagem" class="alert alert-primary alert-
+                 dismissible fade show mb-2" role="alert">
+                <strong>{{mensagem}}</strong>
+                <button type="button" class="btn-close" aria- label="Close" (click)="mensagem = ''"></button>
+            </div>
+
+
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Nome do cliente</th>
+                            <th>Email</th>
+                            <th>Cpf</th>
+                            <th>Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of clientes">
+                            <td>{{c.nome}}</td>
+                            <td>{{c.email}}</td>
+                            <td>{{c.cpf}}</td>
+                            <td>{{c.telefone}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" 
+                                [routerLink]="['/editar-cliente' , c.idCliente]">
+                                    Editar
+                                </button>
+
+                                &nbsp;
+                                <button class="btn btn-danger btn-sm" (click)="onDelete(c.idCliente)">
+                                    Excluir
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">
+                                Quantidade de clientes:
+                                {{clientes.length}}
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+</div>
